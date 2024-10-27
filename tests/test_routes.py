@@ -141,7 +141,7 @@ class TestAccountService(TestCase):
         self.assertEqual(new_account["phone_number"], account.phone_number)
         self.assertEqual(new_account["date_joined"], str(account.date_joined))
 
-    def test_read_an_account(self):
+    def test_read_an_account_not_found(self):
         """It should alert 404 error"""
         response = self.client.get(f"{BASE_URL}/0", content_type="application/json")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
