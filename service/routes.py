@@ -62,6 +62,7 @@ def create_accounts():
 ######################################################################
 
 # ... place you code here to LIST accounts ...
+
 @app.route("/accounts", methods=["GET"])
 def get_accounts():
     """
@@ -74,7 +75,7 @@ def get_accounts():
     # create a list of serialize() accounts
     account_list = [account.serialize() for account in accounts]
     # log the number of accounts being returned in the list
-    app.logger.info("Returning [%s] accounts", len(account_list)) 
+    app.logger.info("Returning [%s] accounts", len(account_list))
     # return the list with a return code of status.HTTP_200_OK
     return jsonify(account_list), status.HTTP_200_OK
 
@@ -83,6 +84,7 @@ def get_accounts():
 ######################################################################
 
 # ... place you code here to READ an account ...
+
 @app.route("/accounts/<int:account_id>", methods=["GET"])
 def read_accounts(account_id):
     """
@@ -96,7 +98,6 @@ def read_accounts(account_id):
         abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.")
     return account.serialize(), status.HTTP_200_OK
 
-    
 ######################################################################
 # UPDATE AN EXISTING ACCOUNT
 ######################################################################
@@ -126,6 +127,7 @@ def update_accounts(account_id):
 ######################################################################
 
 # ... place you code here to DELETE an account ...
+
 @app.route("/accounts/<int:account_id>", methods=["DELETE"])
 def delete_accounts(account_id):
     """
